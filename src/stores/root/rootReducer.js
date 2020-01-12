@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux';
-import {reducer as toastrReducer} from 'react-redux-toastr'
+import {reducer as toastr} from 'react-redux-toastr'
 import page from '../page/pageReducer';
 
-export default (initialData = {}, rd) => {
-  return combineReducers({
-    toastr: toastrReducer,
+export default (initialData = {}, location) => combineReducers({
+    toastr,
     page,
-    location: rd
-  })
-};
+    location
+  });

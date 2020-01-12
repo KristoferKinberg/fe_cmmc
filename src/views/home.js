@@ -1,2 +1,13 @@
 import React from 'react';
-export default () => <h1>HOME</h1>;
+import {useDispatch} from "react-redux";
+import {actionGetHomeData} from "../stores/home/homeActions";
+
+export default () => {
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(actionGetHomeData());
+  }, []);
+
+  return <h1>HOME</h1>;
+}
