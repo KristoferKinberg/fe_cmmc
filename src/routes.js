@@ -1,4 +1,7 @@
 export default {
   HOME: '/',
-  ABOUT: '/about/'
+  MEMBER: '/member/',
+  ABOUT: '/about/',
+  PLANING: '/planing/',
+  EVENTS: '/events/',
 };

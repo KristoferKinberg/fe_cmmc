@@ -5,6 +5,8 @@ import views from './views';
 const App = () => {
   const page = useSelector(({ page }) => page);
 
+  console.log(page)
+
   const Component = views[page];
   return <Component />;
 };
