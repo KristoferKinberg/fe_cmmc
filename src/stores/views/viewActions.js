@@ -1,6 +1,7 @@
 import actionCreator from "../../services/actionCreator";
-import * as viewConstants from "../../views/viewsConstants";
-import {FAILURE, REQUEST, SUCCESS} from "../../constants";
+import * as viewConstants from "../../constants/viewsConstants";
+import {FAILURE, REQUEST, SUCCESS} from "../../constants/constants";
+import {captialToDash} from "../../helpers";
 
 export const GET_VIEW_DATA = 'GET_VIEW_DATA';
 export const RESOLVE_FETCHED_VIEW_DATA = 'RESOLVE_FETCHED_VIEW_DATA';
@@ -20,11 +21,11 @@ export const fetchStateObject = key => {
 };
 
 export const createRequestActions = key => {
-  console.log(key)
+  console.log('key: ', key)
   return {
-    [REQUEST]: `REQUEST_${key.toUpperCase()}_DATA`,
-    [SUCCESS]: `RESOLVE_FETCHED_${key.toUpperCase()}_DATA`,
-    [FAILURE]: `FAILED_TO_FETCH_${key.toUpperCase()}_DATA`,
+    [REQUEST]: `REQUEST_${captialToDash(key)}_DATA`,
+    [SUCCESS]: `RESOLVE_FETCHED_${captialToDash(key)}_DATA`,
+    [FAILURE]: `FAILED_TO_FETCH_${captialToDash(key)}_DATA`,
   }
 };
 

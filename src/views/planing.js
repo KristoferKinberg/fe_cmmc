@@ -1,3 +1,8 @@
 import React from 'react';
+import UseGetViewData from "../effects/useGetViewData";
 
-export default () => <h1>PLANING</h1>;
+export default () => {
+  UseGetViewData({ view: 'planing' });
+
+  return <h1>PLANING</h1>;
+}

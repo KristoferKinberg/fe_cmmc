@@ -1,5 +1,5 @@
 import {createRequestActions} from "../stores/views/viewActions";
-import {SUCCESS} from "../constants";
+import {SUCCESS} from "../constants/constants";
 import mergeReducers from "./createReducer";
 import {reduceDataToId} from "../helpers";
 
@@ -12,9 +12,13 @@ import {reduceDataToId} from "../helpers";
 export default (name, ...reducers) => {
   const actions = createRequestActions(name);
 
+  console.log(actions[SUCCESS])
+
   return mergeReducers({}, {
     [actions[SUCCESS]]: (state, action) => {
-      return { ...state, ...reduceDataToId(action.data) }
+      return Array.isArray(action.data)
+        ? { ...state, ...reduceDataToId(action.data) }
+        : { ...state, ...action.data };
     },
     ...reducers
   });
