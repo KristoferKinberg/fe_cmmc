@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
+import initialState from "./initialState";
 import {reducer as toastr} from 'react-redux-toastr'
 import page from '../page/pageReducer';
 import home from '../home/homeReducer';
+import admin from '../admin/adminReducer';
 import news from '../entities/news/newsReducer';
 import slides from '../entities/slides/slidesReducer';
 import intro from '../entities/intro/introReducer';
@@ -38,10 +40,11 @@ const entities = combineReducers({
   galleryYears,
 });
 
-export default (initialData = {}, location) => combineReducers({
+export default (initialData = initialState, location) => combineReducers({
   toastr,
   page,
   location,
   home,
-  entities
+  entities,
+  admin,
 });

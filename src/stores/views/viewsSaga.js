@@ -9,15 +9,12 @@ export const watchGetViewData = function* () {
     makeGetViewData
   )
 };
-
 const makeGetViewData = function* ({ view }) {
   try {
     yield put({ type: `FETCHING_DATA_FOR_VIEW_${view}`});
 
     const { data } = yield call(makeGetRequest, view);
     const entitiesActions = createDataFetchActions(data);
-
-    console.log(entitiesActions, 's');
 
     yield all(Object.keys(data).map(key => put(entitiesActions[key][SUCCESS](data[key]))));
     yield put({ type: `DATA_FOR_VIEW_${view}_FETCHED`});

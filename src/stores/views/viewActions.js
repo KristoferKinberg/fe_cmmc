@@ -21,7 +21,7 @@ export const fetchStateObject = key => {
 };
 
 export const createRequestActions = key => {
-  console.log('key: ', key)
+  // console.log('key: ', key)
   return {
     [REQUEST]: `REQUEST_${captialToDash(key)}_DATA`,
     [SUCCESS]: `RESOLVE_FETCHED_${captialToDash(key)}_DATA`,

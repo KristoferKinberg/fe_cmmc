@@ -1,0 +1,180 @@
+@import "../../styles/mixins";
+
+
+$successPrimaryColor:   #4CCB5E;
+$successSecondaryColor: #81DA8E;
+
+$warningPrimaryColor:   #FFB62F;
+$warningSecondaryColor: #FFD382;
+
+$dangerPrimaryColor:    #CD5C5C;
+$dangerSecondaryColor:  #DC8C8C;
+
+$primaryPrimaryColor:   #5A5AFF;
+$primarySecondaryColor: #8B8BFF;
+
+$neutralPrimaryColor:   #777;
+$neutralSecondaryColor: #999;
+
+$disabledPrimaryColor:   #777;
+$disabledSecondaryColor: #bebebe;
+
+$white:                 #fff;
+
+.Button {
+  padding: 0 10px;
+  border: 3px solid #777;
+  min-height: 3em;
+  font-weight: 900;
+  color: #555;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #fff;
+  outline: 0;
+  position: relative;
+
+  &.transparent:not(:hover){
+    background: transparent!important;
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+
+  &.disabled {
+    border-color: $disabledPrimaryColor;
+    color: $disabledPrimaryColor;
+    background: $disabledSecondaryColor;
+    outline:0;
+    @include transition(200);
+
+    &:hover {
+      cursor: not-allowed;
+    }
+
+    &:focus {
+      outline:0;
+    }
+
+    &:active {
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  @include transition(200);
+
+  &:active {
+    right: -1px;
+    bottom: -1px;
+  }
+
+  &__icon {
+    margin-left: 10px;
+  }
+
+  &.success {
+    border-color: $successPrimaryColor;
+    color: $successPrimaryColor;
+    @include transition(200);
+
+    &:hover {
+      background: $successPrimaryColor;
+      color: $white;
+      @include transition(200);
+    }
+
+    &:active {
+      background: $successSecondaryColor;
+      @include transition(200);
+    }
+
+    &:focus {
+      outline:0;
+    }
+  }
+
+  &.warning {
+    border-color: $warningPrimaryColor;
+    color: $warningPrimaryColor;
+    @include transition(200);
+
+    &:hover {
+      background: $warningPrimaryColor;
+      color: $white;
+      @include transition(200);
+    }
+
+    &:active {
+      background: $warningSecondaryColor;
+      @include transition(200);
+    }
+
+    &:focus {
+      outline:0;
+    }
+  }
+
+  &.danger {
+    border-color: $dangerPrimaryColor;
+    color: $dangerPrimaryColor;
+    @include transition(200);
+
+    &:hover {
+      background: $dangerPrimaryColor;
+      color: $white;
+      @include transition(200);
+    }
+
+    &:active {
+      background: $dangerSecondaryColor;
+      @include transition(200);
+    }
+
+    &:focus {
+      outline:0;
+    }
+  }
+
+  &.primary {
+    border-color: $primaryPrimaryColor;
+    color: $primaryPrimaryColor;
+    @include transition(200);
+
+    &:hover {
+      background: $primaryPrimaryColor;
+      color: $white;
+      @include transition(200);
+    }
+
+    &:active {
+      background: $primarySecondaryColor;
+      @include transition(200);
+    }
+
+    &:focus {
+      outline:0;
+    }
+  }
+
+  &.neutral {
+    border-color: $neutralPrimaryColor;
+    color: $neutralPrimaryColor;
+    @include transition(200);
+
+    &:hover {
+      background: $neutralPrimaryColor;
+      color: $white;
+      @include transition(200);
+    }
+
+    &:active {
+      background: $neutralSecondaryColor;
+      @include transition(200);
+    }
+
+    &:focus {
+      outline:0;
+    }
+  }
+}

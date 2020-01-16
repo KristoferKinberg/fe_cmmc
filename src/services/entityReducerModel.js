@@ -20,6 +20,7 @@ export default (name, ...reducers) => {
         ? { ...state, ...reduceDataToId(action.data) }
         : { ...state, ...action.data };
     },
+    [`UPDATE_${name.toUpperCase()}`]: (state, { data }) => data,
     ...reducers
   });
 }

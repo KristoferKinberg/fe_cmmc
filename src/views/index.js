@@ -1,9 +1,13 @@
-import Home from './home';
-import Member from './member';
-import About from "./about";
-import Planing from './planing';
-import Events from './events';
-
+import Home from './Home';
+import Member from './Member';
+import About from "./About";
+import Planing from './Planing';
+import Events from './Events';
+import LogIn from './forms/subViews/logIn';
+import RegisterUser from './forms/subViews/registerUser';
+import ResetPassword from './forms/subViews/resetPassword';
+import SetNewPassword from './forms/subViews/setNewPassword';
+import AdminHome from './admin/AdminHome';
 
 export default {
   Home,
@@ -11,4 +15,9 @@ export default {
   About,
   Planing,
   Events,
+  LogIn,
+  RegisterUser,
+  ResetPassword,
+  SetNewPassword,
+  AdminHome,
 }

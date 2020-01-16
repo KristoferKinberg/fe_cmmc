@@ -97,10 +97,11 @@ export default () => ({
    * Execute post
    * @returns {*}
    */
-  post() {
-    return this.createAxios().post(
-      this.url,
-      this.payload
-    )
+  async post() {
+    return this.createAxios()
+      .post(
+        this.url,
+        this.payload
+      )
   }
 });
