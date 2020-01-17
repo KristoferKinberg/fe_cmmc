@@ -6,6 +6,7 @@ export const PRIMARY = 'PRIMARY';
 export const NEUTRAL = 'NEUTRAL';
 export const DISABLED = 'DISABLED';
 export const FAILURE = 'FAILURE';
+export const UPDATE = 'UPDATE';
 
 export const MOBILE_S = 'MOBILE_S';
 export const MOBILE_M = 'MOBILE_M';

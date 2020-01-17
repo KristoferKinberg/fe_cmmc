@@ -59,7 +59,7 @@ export const StyledBoxHeader = styled.div`
   border-left: 1px solid #bbb;
   border-right: 1px solid #bbb;
   display: flex;
-  padding: 20px;
+  padding: 0 20px;
   justify-content: space-between;
   align-items: center;
 `;

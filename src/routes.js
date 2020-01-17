@@ -1,3 +1,7 @@
+import * as EntitiesRoutes from './constants/entitiesConstants';
+
+const generateEntitiesRoutes = () => Object.keys(EntitiesRoutes).reduce((acc, curr) => ({ ...acc, [curr]: `/admin/${EntitiesRoutes[curr]}` }), {});
+
 export default {
   HOME: '/',
   MEMBER: '/member/',
@@ -9,4 +13,6 @@ export default {
   RESET_ADMIN_PASSWORD: '/admin/reset-password',
   SET_NEW_ADMIN_PASSWORD: '/admin/set-new-password',
   ADMIN_HOME: '/admin/home',
+
+  ...generateEntitiesRoutes(),
 };

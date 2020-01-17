@@ -1,6 +1,8 @@
 import { NOT_FOUND } from 'redux-first-router';
 
 import * as routeConstants from "../../constants/viewsConstants";
+import * as EntitiesRoutes from '../../constants/entitiesConstants';
+
 
 /**
  * Converts a constant to a view name
@@ -19,7 +21,7 @@ const generateRoutes = routes => routes.reduce((acc, curr) => ({
   [curr]: generateComponentName(curr)
 }), {});
 
-const components = generateRoutes(Object.keys(routeConstants))
+const components = {...generateRoutes(Object.keys(routeConstants)), ...EntitiesRoutes};
 
 export default (state = components[routeConstants.HOME], action = {}) => {
   return components[action.type] || state;

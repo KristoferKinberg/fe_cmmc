@@ -1,5 +1,5 @@
 import {createRequestActions} from "../stores/views/viewActions";
-import {SUCCESS} from "../constants/constants";
+import {SUCCESS, UPDATE} from "../constants/constants";
 import mergeReducers from "./createReducer";
 import {reduceDataToId} from "../helpers";
 
@@ -20,7 +20,7 @@ export default (name, ...reducers) => {
         ? { ...state, ...reduceDataToId(action.data) }
         : { ...state, ...action.data };
     },
-    [`UPDATE_${name.toUpperCase()}`]: (state, { data }) => data,
+    [`${UPDATE}_${name.toUpperCase()}`]: (state, { data }) => data,
     ...reducers
   });
 }

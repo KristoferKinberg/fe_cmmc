@@ -1,5 +1,6 @@
 import React from 'react';
 import AdminsBox from "../../../components/Admin/AdminsBox";
+import 'react-tabs/style/react-tabs.css';
 
 export default () => {
   return <div style={{ width: '100%', height: '100%' }}>

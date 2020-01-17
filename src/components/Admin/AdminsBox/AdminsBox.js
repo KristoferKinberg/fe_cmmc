@@ -130,7 +130,7 @@ const AdminsBox = () => {
    * @returns {null}
    */
   const renderUsers = (usr, buttons) => usr
-    ? usr.map(({ email, id }) => <StyledAdminsRow key={email}>
+    ? Object.values(usr).map(({ email, id }) => <StyledAdminsRow key={email}>
       { email }
       { buttons({id, email }) }
     </StyledAdminsRow>)

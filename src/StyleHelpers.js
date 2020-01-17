@@ -11,7 +11,7 @@ export const applyTransition = (duration, firstProp, ...args) => {
   `;
 };
 
-export const apply200Transition = (...args) =>  applyTransition(200, args);
+export const apply200Transition = (...args) => applyTransition(200, args);
 
 export const useMediaMax = device => styles => `
   @media ${devicesMax[device]} {
