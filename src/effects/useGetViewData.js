@@ -8,7 +8,6 @@ export default ({ view }) => {
 
   React.useEffect(() => {
     dispatch(actionGetViewData(view));
-    dispatch({ type: 'ADD_TODO' });
   }, []);
 
   return null

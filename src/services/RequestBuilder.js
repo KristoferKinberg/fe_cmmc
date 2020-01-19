@@ -103,5 +103,17 @@ export default () => ({
         this.url,
         this.payload
       )
+  },
+
+  /**
+   * Execute post
+   * @returns {*}
+   */
+  async delete() {
+    return this.createAxios()
+      .delete(
+        this.url,
+        this.payload
+      )
   }
 });

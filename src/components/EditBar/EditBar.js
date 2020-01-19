@@ -27,13 +27,6 @@ class EditBar extends React.PureComponent {
     callBack: () => {},
   };
 
-  setClasses = () => {
-    return classNames({
-      'EditBar': true,
-      'has_border': this.props.hasBorder,
-    });
-  };
-
   clickEvent = (clickEvent) => () => {
     this.props[clickEvent](this.props.id);
     this.props.callBack(this.props.id, clickEvent)

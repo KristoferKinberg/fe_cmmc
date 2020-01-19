@@ -1,4 +1,5 @@
 import actionCreator from "../../services/actionCreator";
+import {CREATE, SPECIFIC, UPDATE} from "../../constants/constants";
 
 export const ADMIN_DO_LOGIN = 'ADMIN_DO_LOGIN';
 export const GET_EMAIL = 'GET_EMAIL';
@@ -19,6 +20,12 @@ export const REMOVE_INVITED = 'REMOVE_INVITED';
 export const REMOVE_USER = 'REMOVE_USER';
 export const RESEND_INVITE = 'RESEND_INVITE';
 
+export const ADMIN_UPDATE_DRAFT = 'ADMIN_UPDATE_DRAFT';
+export const ADMIN_RESET_DRAFT = 'ADMIN_RESET_DRAFT';
+export const ADMIN_PREP_NEW_DRAFT = 'ADMIN_PREP_NEW_DRAFT';
+export const ADMIN_CLEAR_DRAFT = 'ADMIN_CLEAR_DRAFT';
+export const ADMIN_SET_DIRTY_DRAFT = 'ADMIN_SET_DIRTY_DRAFT';
+
 export const actionAdminDoLogin = actionCreator(ADMIN_DO_LOGIN, 'loginData');
 export const actionGetEmail = actionCreator(GET_EMAIL, 'token');
 export const actionSaveUser = actionCreator(SAVE_USER, 'user');
@@ -37,4 +44,11 @@ export const actionInviteAdmin = actionCreator(INVITE_ADMIN, 'email');
 export const actionRemoveInvited = actionCreator(REMOVE_INVITED, 'adminId');
 export const actionRemoveAdmin = actionCreator(REMOVE_USER, 'adminId');
 export const actionResendInvite = actionCreator(RESEND_INVITE, 'id');
+
+export const actionUpdateDraft = actionCreator(ADMIN_UPDATE_DRAFT, 'data', 'dirtyDraft');
+export const actionSaveNew = actionCreator(CREATE, 'entity', 'payload');
+export const actionSaveEdit = actionCreator(UPDATE, 'payload');
+export const actionPrepNewDraft = actionCreator(ADMIN_PREP_NEW_DRAFT, 'entity');
+export const actionRequestSpecific = actionCreator(SPECIFIC,' origin', 'payload', 'isAdmin');
+export const actionSetDirtyDraftState = actionCreator(ADMIN_SET_DIRTY_DRAFT, 'dirtyDraftState');
 

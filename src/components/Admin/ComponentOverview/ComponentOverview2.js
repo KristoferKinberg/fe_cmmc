@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   CompOverviewHeader,
   HeaderTitle,
@@ -8,32 +8,31 @@ import {
   StyledOverviewComponent,
   StyledOverviewStatusBar
 } from "./StyledComponentOverview";
-import { withRouter } from 'react-router';
-import {DELETE, MANY} from "../../../store/sagas";
 import EditBar from "../../../components/EditBar";
 import AddButton from "../../../components/AddButton";
 import OverviewModal from "../OverviewModal";
-import OverviewBar from "../OverviewBar";
 import {EyeOff} from "react-feather";
+import UseGetEntityData from "../../../effects/useGetEntityData";
+import UseGetEntities from "../../../effects/useGetEntitites";
+import {actionRequestRemoveEntity} from "../../../stores/entities/entitiesActions";
 
-export default withRouter(({ entry, title, component, width = 3, match, history }) => {
-  const { activeYear } = useSelector(state => state.admin.entriesData[entry]);
+export default ({ entity, title, component, width = 3 }) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = React.useState(false);
   const [idForRemoval, setIdForRemoval] = React.useState(null);
 
-  React.useEffect(() => {
-    dispatch({ type: MANY, origin: entry, isAdmin: true, providedYear: activeYear.year });
-  }, []);
+  console.log(showModal);
 
-  const data = useSelector(state => state.admin.years[`_${activeYear.year}`][entry]);
+  UseGetEntityData({ entity });
+  const { [entity]: data } = UseGetEntities([entity]);
 
   /**
    * Edit component
    * @param id
    * @returns {function(): *}
    */
-  const editComponent = id => () => history.push(`${match.url}${id}`);
+  // const editComponent = id => () => history.push(`${match.url}${id}`);
+  const editComponent = () => {};
 
   /**
    * Hide modal
@@ -44,13 +43,16 @@ export default withRouter(({ entry, title, component, width = 3, match, history 
    * Add component
    * @returns {*}
    */
-  const addComponent = () => history.push(`${match.url}new`);
+  // const addComponent = () => history.push(`${match.url}new`);
+  const addComponent = () => {};
 
   /**
    * Remove item
    */
   const removeItem = () => {
-    dispatch({ type: DELETE, origin: entry, id: idForRemoval, providedYear: activeYear.year, isAdmin: true });
+    //dispatch({ type: 'DELETE', origin: entity, id: idForRemoval,  isAdmin: true });
+    console.log(':D')
+    dispatch(actionRequestRemoveEntity(entity, idForRemoval));
     setShowModal(false);
     setIdForRemoval(null);
   };
@@ -116,16 +118,19 @@ export default withRouter(({ entry, title, component, width = 3, match, history 
      * @param speaker
      * @returns {boolean}
      */
-    const isHidden = data => data.reveal_date !== null && new Date(data.reveal_date).getTime() > new Date().getTime();
+    // const isHidden = data => data.reveal_date !== null && new Date(data.reveal_date).getTime() > new Date().getTime();
+    const isHidden = data => false;
+
+    console.log(data);
 
     return data
-      ? data.map(item =>
+      ? Object.values(data).map(item =>
         <StyledComponentWrap key={item.id} className={`col-${width}`}>
           <StyledOverviewComponent>
             <StyledOverviewStatusBar>
               { renderHidden(isHidden(item)) }
             </StyledOverviewStatusBar>
-            <Component data={item} isAdmin={true}/>
+            <Component {...item} isAdmin={true}/>
           </StyledOverviewComponent>
 
           <EditBar
@@ -142,9 +147,8 @@ export default withRouter(({ entry, title, component, width = 3, match, history 
   return <StyledComponentOverview>
     { renderModal() }
     { renderHeader() }
-    <OverviewBar entry={entry}/>
     <div className="row">
       { renderComponents() }
     </div>
   </StyledComponentOverview>;
-});
+};

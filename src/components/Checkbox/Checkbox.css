@@ -1,0 +1,36 @@
+input[type="checkbox"].BundlerCheckbox {
+  display: none;
+}
+input[type="checkbox"].BundlerCheckbox + span {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background: white left top no-repeat;
+  border: 2px solid #555;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type="checkbox"].BundlerCheckbox:checked + span {
+  //background: #D9534F -19px top no-repeat;
+}
+
+input[type="checkbox"].BundlerCheckbox + span .CheckMark {
+  opacity: 0;
+}
+
+input[type="checkbox"].BundlerCheckbox:checked + span .CheckMark {
+  position: relative;
+  opacity: 1;
+  font-weight: bold;
+  color: #fff;
+}
+
+input[type="checkbox"].BundlerCheckbox + span {
+  margin-right: 4px;
+  background-color: transparent;
+}
+
+input[type="checkbox"].BundlerCheckbox:checked + span {
+  background: #0dafed;
+}

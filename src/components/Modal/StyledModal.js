@@ -30,14 +30,16 @@ export const StyledModal = styled.div`
     ${ applyTransition(200, 'opacity', 'z-index', 'background') }
   `}
 
-  &.isActive {
-    opacity: 1;
-    z-index: 9999;
-    background: rgba(0,0,0,.75);
-
-    ${ applyTransition(200, 'opacity', 'z-index', 'background') }
-  }
-`;
+  ${({ isActive }) => isActive 
+    ? `
+      opacity: 1;
+      z-index: 9999;
+      background: rgba(0,0,0,.75);
+  
+      ${ applyTransition(200, 'opacity', 'z-index', 'background') }
+      `
+    : ''}
+  `;
 
 export const StyledModalContentWrapper = styled.div`
   height: 100%;

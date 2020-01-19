@@ -1,6 +1,6 @@
 import React from 'react';
-import UseGetViewData from "../effects/useGetViewData";
 import {ABOUT} from "../constants/viewsConstants";
+import UseGetViewData from "../effects/useGetViewData";
 
 export default () => {
   UseGetViewData({ view: ABOUT });

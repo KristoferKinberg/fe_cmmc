@@ -1,4 +1,4 @@
-export const reduceDataToId = arr => arr.reduce((acc, curr) => ({ ...acc, [curr.id]: curr }), {})
+export const reduceDataToId = arr => arr.reduce((acc, curr) => ({ ...acc, [curr.id]: curr }), {});
 
 /**
  * Formats the filenames
@@ -7,6 +7,6 @@ export const reduceDataToId = arr => arr.reduce((acc, curr) => ({ ...acc, [curr.
  */
 export const captialToDash = (fileName) => [...fileName.replace('.js', '')]
   .reduce((acc, curr) => curr === curr.toUpperCase()
-    ? `${acc}_${curr.toUpperCase()}`
+    ? `${acc}_${curr}`
     : `${acc}${curr.toUpperCase()}`
     , '');

@@ -7,6 +7,8 @@ export const NEUTRAL = 'NEUTRAL';
 export const DISABLED = 'DISABLED';
 export const FAILURE = 'FAILURE';
 export const UPDATE = 'UPDATE';
+export const CREATE = 'CREATE';
+export const SPECIFIC = 'SPECIFIC';
 
 export const MOBILE_S = 'MOBILE_S';
 export const MOBILE_M = 'MOBILE_M';

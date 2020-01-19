@@ -52,3 +52,26 @@ export const makePostRequest = requestBody(function* (url, body, settings = { us
     requestBuilder.post
   ]);
 });
+
+
+/**
+ * Make delete request
+ * @param url
+ * @param body
+ * @param settings
+ * @returns {IterableIterator<*>}
+ */
+export const makeDeleteRequest = requestBody(function* (url, id, settings = { useToken: true }) {
+  const { useToken } = settings;
+
+  const requestBuilder = RequestBuilder();
+  requestBuilder
+    .setUrl(url);
+
+  if (useToken) requestBuilder.useHeader();
+
+  return yield call([
+    requestBuilder,
+    requestBuilder.delete
+  ]);
+});

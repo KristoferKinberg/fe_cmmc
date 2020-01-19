@@ -1,16 +1,18 @@
 import {all} from "redux-saga/effects";
 import {watchGetHomeData} from "../home/homeSaga";
-import {watchGetViewData} from "../views/viewsSaga";
-import {watchUpdateEntity} from "../entities/entitiesSagas";
+import {watchGetViewData, watchGetEntityData} from "../views/viewsSaga";
+import {watchRemoveEntity, watchUpdateEntity} from "../entities/entitiesSagas";
 import {watchDoLogin, watchGetAdmins, watchGetInvited} from "../admin/adminSaga";
 
 export function* rootSaga() {
   yield all([
     watchGetHomeData(),
     watchGetViewData(),
-    watchUpdateEntity(),
+    watchGetEntityData(),
+    // watchUpdateEntity(),
     watchDoLogin(),
     watchGetAdmins(),
     watchGetInvited(),
+    watchRemoveEntity(),
   ]);
 }

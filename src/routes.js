@@ -1,6 +1,7 @@
 import * as EntitiesRoutes from './constants/entitiesConstants';
 
-const generateEntitiesRoutes = () => Object.keys(EntitiesRoutes).reduce((acc, curr) => ({ ...acc, [curr]: `/admin/${EntitiesRoutes[curr]}` }), {});
+const generateEntitiesRoutes = () => Object.keys(EntitiesRoutes).reduce((acc, curr) => ({ ...acc, [curr+'s']: `/admin/${EntitiesRoutes[curr]}` }), {});
+const generateEntitiesRoutesSpecific = () => Object.keys(EntitiesRoutes).reduce((acc, curr) => ({ ...acc, [curr]: `/admin/${EntitiesRoutes[curr]}/:id` }), {});
 
 export default {
   HOME: '/',
@@ -15,4 +16,5 @@ export default {
   ADMIN_HOME: '/admin/home',
 
   ...generateEntitiesRoutes(),
+  ...generateEntitiesRoutesSpecific(),
 };
