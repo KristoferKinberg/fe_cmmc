@@ -20,8 +20,6 @@ export default () => {
   const [subBar, setSubBar] = React.useState(false);
   const dispatch = useDispatch();
 
-  console.log('LINKS', Links);
-
   /**
    * Change view
    * @param view

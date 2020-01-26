@@ -22,11 +22,6 @@ const generateEntitiesRoutesSpecific = () => Object.keys(EntitiesRoutes).reduce(
   }
 }), {});
 
-console.log({
-  ...generateEntitiesRoutes(),
-  ...generateEntitiesRoutesSpecific(),
-});
-
 export default {
   HOME: {
     path: '/',

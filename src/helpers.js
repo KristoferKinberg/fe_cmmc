@@ -5,8 +5,10 @@ export const reduceDataToId = arr => arr.reduce((acc, curr) => ({ ...acc, [curr.
  * @param fileName
  * @returns {*}
  */
-export const captialToDash = (fileName) => [...fileName.replace('.js', '')]
-  .reduce((acc, curr) => curr === curr.toUpperCase()
+export const captialToDash = (fileName) => {
+  const [firstLetter, ...rest] = [...fileName.replace('.js', '')];
+  return rest.reduce((acc, curr) => curr === curr.toUpperCase()
     ? `${acc}_${curr}`
     : `${acc}${curr.toUpperCase()}`
-    , '');
+    , firstLetter.toUpperCase());
+};

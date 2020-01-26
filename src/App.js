@@ -14,7 +14,7 @@ const App = () => {
   console.log(type);
   console.log(views);
   console.log(page);
-  console.log(Component);
+  // console.log(Component);
 
   /**
    * Returns boolean if view is admin or not

@@ -47,6 +47,19 @@ export const specificComponentRoutes = [
     ],
   },
   {
+    entity: 'Goals', component: AnyComponent, handlers: [
+      <TextareaBlock title={'Text'} responsibility={'text'}/>,
+    ],
+  },
+  {
+    entity: 'Statues', component: AnyComponent, handlers: [
+      <TextareaBlock title={'Text'} responsibility={'text'}/>,
+    ],
+  },
+];
+
+const singularSpecificRoutes = [
+  {
     entity: 'InsuranceStaff', component: AnyComponent, handlers: [
       <TextareaBlock title={'Text'} responsibility={'text'}/>,
     ],
@@ -62,20 +75,11 @@ export const specificComponentRoutes = [
     ],
   },
   {
-    entity: 'Goals', component: AnyComponent, handlers: [
-      <TextareaBlock title={'Text'} responsibility={'text'}/>,
-    ],
-  },
-  {
-    entity: 'Statues', component: AnyComponent, handlers: [
-      <TextareaBlock title={'Text'} responsibility={'text'}/>,
-    ],
-  },
-  {
     entity: 'Board', component: AnyComponent, handlers: [
       <TextareaBlock title={'Text'} responsibility={'text'}/>,
     ],
   },
+
   {
     entity: 'Officials', component: AnyComponent, handlers: [
       <TextareaBlock title={'Text'} responsibility={'text'}/>,
@@ -94,6 +98,7 @@ export const specificComponentRoutes = [
 ];
 
 const ComponentOverviewComps = specificComponentRoutes.reduce((acc, curr) => ({ ...acc, [`${curr.entity}Specific`]: componentSpecificGenerator(curr) }), {});
+const singularSpecificComps = singularSpecificRoutes.reduce((acc, curr) => ({ ...acc, [curr.entity]: componentSpecificGenerator(curr) }), {});
 
 console.log('ComponentOverviewComps', ComponentOverviewComps);
-export default ComponentOverviewComps;
+export default {...ComponentOverviewComps, ...singularSpecificComps };

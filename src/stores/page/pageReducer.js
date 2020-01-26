@@ -49,7 +49,7 @@ const componentsOverride = {
   ...components,
   [BOARD]: `${generateComponentName(EntitiesRoutes.BOARD)}Specific`,
   [INTRO]: `${generateComponentName(EntitiesRoutes.INTRO)}Specific`,
-  [INSURANCE_STAFF]: `${generateComponentName(EntitiesRoutes.INSURANCE_STAFF)}Specific`,
+  [INSURANCE_STAFF]: `${generateComponentName(EntitiesRoutes.INSURANCE_STAFF)}`,
   [INSPECTIONS_STAFF]: `${generateComponentName(EntitiesRoutes.INSPECTIONS_STAFF)}Specific`,
   [INSURANCE_HOW_TO]: `${generateComponentName(EntitiesRoutes.INSURANCE_HOW_TO)}Specific`,
   [OFFICIALS]: `${generateComponentName(EntitiesRoutes.OFFICIALS)}Specific`,

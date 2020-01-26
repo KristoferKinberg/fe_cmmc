@@ -1,12 +1,6 @@
 import routes from "../../../routes";
-// import {ABOUT, EVENTS, HOME, MEMBER, PLANING} from "../../../constants/viewsConstants";
 import * as ViewsConstants from '../../../constants/viewsConstants';
 import * as EntitiesRoutes from '../../../constants/entitiesConstants';
-
-console.log(Object.keys(ViewsConstants));
-console.log(Object.keys(ViewsConstants));
-console.log(Object.keys(ViewsConstants));
-console.log(Object.keys(ViewsConstants));
 
 const converter = (obj) => Object.keys(obj).reduce((acc, curr) => ({ ...acc, [curr]: curr }), {});
 
