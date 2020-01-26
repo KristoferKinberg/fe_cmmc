@@ -16,7 +16,6 @@ import UseGetEntityData from "../../../effects/useGetEntityData";
 import UseGetEntities from "../../../effects/useGetEntitites";
 import {actionRequestRemoveEntity} from "../../../stores/entities/entitiesActions";
 import {selectLocation} from "../../../selectors";
-import routes from "../../../routes";
 import {SPECIFIC} from "../../../constants/constants";
 import {actionChangeView} from "../../../stores/page/pageActions";
 import {actionSetDraft} from "../../../stores/draft/draftActions";
