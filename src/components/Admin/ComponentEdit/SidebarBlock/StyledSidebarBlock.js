@@ -24,5 +24,5 @@ export const StyledSidebarBlockHeaderTitle = styled.div`
 `;
 
 export const StyledSidebarBlockContent = styled.div`
-  width: 100%;
+  display: flex;
 `;

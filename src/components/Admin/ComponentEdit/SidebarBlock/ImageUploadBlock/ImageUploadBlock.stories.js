@@ -1,10 +1,8 @@
 import React from 'react';
-
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import '../../../../../../node_modules/bootstrap/scss/bootstrap.scss';
+import ImageUploadBlock from "./ImageUploadBlock";
 
-// import { linkTo } from '@storybook/addon-links';
 const blockStyle = {
   width: '300px',
   borderLeft: '1px solid #cecece',
@@ -12,7 +10,6 @@ const blockStyle = {
   height: '300px'
 };
 
-import ImageUploadBlock from "./ImageUploadBlock";
 
 class Temp extends React.PureComponent {
   constructor(props) {

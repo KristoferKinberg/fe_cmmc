@@ -2,9 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import '../../../node_modules/bootstrap/scss/bootstrap.scss';
 import { Power } from 'react-feather'
-// import { linkTo } from '@storybook/addon-links';
 import Modal from './';
 import Button from '../Button/';
 

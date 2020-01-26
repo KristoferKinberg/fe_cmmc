@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Edit2, Trash2, Plus } from 'react-feather';
 
-import './EditBar.scss';
-
 class EditBarStateless extends React.PureComponent {
   static propTypes = {
     size: PropTypes.number,

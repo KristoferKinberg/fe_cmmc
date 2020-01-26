@@ -25,7 +25,6 @@ class InputBlock extends React.PureComponent {
       <SidebarBlock title={title}>
         <StyledInput
           type="text"
-          className={this.getInputClasses()}
           onChange={this.valueChange}
           value={inputValue}
           disabled={disabled}

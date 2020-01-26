@@ -12,8 +12,6 @@ import {reduceDataToId} from "../helpers";
 export default (name, ...reducers) => {
   const actions = createRequestActions(name);
 
-  console.log(actions[SUCCESS])
-
   return mergeReducers({}, {
     [actions[SUCCESS]]: (state, action) => {
       return Array.isArray(action.data)

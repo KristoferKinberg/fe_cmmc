@@ -2,8 +2,6 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import '../../../node_modules/bootstrap/scss/bootstrap.scss';
-
 import { Play, Database } from 'react-feather';
 
 // import { linkTo } from '@storybook/addon-links';

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  actionUpdateDraft,
   actionSaveEdit,
   actionSaveNew,
   actionPrepNewDraft,
@@ -18,20 +17,22 @@ import {
   StyledSidebarHeaderElem
 } from "./StyledComponentEdit";
 import Button from "../../../components/Button";
+import {selectDraftPart, selectParamId} from "../../../selectors";
+import {actionRequestGetEntity} from "../../../stores/entities/entitiesActions";
+import {actionUpdateDraft} from "../../../stores/draft/draftActions";
 
 const defaultSettings = { size: "3", centerComponent: true, maxHeight: "100%" };
 
-export default ({ settings, children, component, overrideStyles, entry: entity }) => {
-  const id = 1; // TODO THIS IS A TEMP, PLEASE REMOVE ASAP: 2020/01/19
+export default ({ settings, children, component, overrideStyles, entity }) => {
   const dispatch = useDispatch();
-  const { draft, original, dirtyDraft } = useSelector(({ admin }) => admin.draftData || {});
+  const id = useSelector(selectParamId);
+  const { data, dirtyDraft } = useSelector(selectDraftPart);
   const settingsObj = { ...settings, ...defaultSettings };
 
-  React.useEffect(() => {
-      isNew()
-        ? dispatch(actionPrepNewDraft(entity))
-        : dispatch(actionRequestSpecific(entity, id));
+  console.log(data);
 
+  React.useEffect(() => {
+      dispatch(actionRequestGetEntity(entity, id));
       return () => dispatch({ type: ADMIN_CLEAR_DRAFT });
     },
     []);
@@ -40,25 +41,20 @@ export default ({ settings, children, component, overrideStyles, entry: entity }
    * Checks if we are creating a new or editing an existing one
    * @returns {boolean}
    */
-  const isNew = () => {
-    if (draft) return !('id' in draft);
-    return id === 'new';
-  };
+  const isNew = () => id === 'new';
 
   /**
    * Callback for updating draft
    * @param key
    * @returns {function(*=)}
    */
-  const updateDraft = key => value => {
-    dispatch(actionUpdateDraft({ ...draft, [key]: value }));
-  };
+  const updateDraft = key => value => dispatch(actionUpdateDraft(key, value));
 
   /**
    * Setup children if data is available
    * @returns {any}
    */
-  const setupSidebar = () => draft
+  const setupSidebar = () => data
     ? <StyledSidebarContent>
       { cloneChildren() }
     </StyledSidebarContent>
@@ -70,8 +66,9 @@ export default ({ settings, children, component, overrideStyles, entry: entity }
    */
   const cloneChildren = () => React.Children.map(children, child => child.props.responsibility
     ? React.cloneElement(
-      child, {
-        inputValue: draft[child.props.responsibility],
+      child,
+      {
+        inputValue: data[child.props.responsibility],
         callBack: updateDraft(child.props.responsibility)
       }
     )
@@ -81,15 +78,15 @@ export default ({ settings, children, component, overrideStyles, entry: entity }
   /**
    * Reset draft
    */
-  const resetDraft = () => dispatch(actionUpdateDraft(original, false));
+  const resetDraft = () => dispatch(actionUpdateDraft(false));
 
   /**
    * Save draft
    * @returns {*}
    */
-  const saveDraft = () => isNew()
-    ? dispatch(actionSaveNew(entity, draft))
-    : dispatch(actionSaveEdit(entity, draft));
+  const saveDraft = () => isNew() // TODO: CAN REMOVE THIS, JUST SEND TO SAME AS WHEN GETTING A ENTITY, BACKEND WILL HANDLE IT.
+    ? dispatch(actionSaveNew(entity, data))
+    : dispatch(actionSaveEdit(entity, data));
 
   /**
    * Render button
@@ -137,14 +134,14 @@ export default ({ settings, children, component, overrideStyles, entry: entity }
    */
   const setupComponent = () => {
     const Component = component;
-    return <Component data={draft} />
+    return <Component {...data} />
   };
 
   /**
    * Set up main component
    * @returns {any}
    */
-  const renderComponent = () =>  draft
+  const renderComponent = () =>  data
     ? setupComponent()
     : null;
 

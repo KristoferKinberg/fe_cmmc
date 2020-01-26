@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const StyledComponentEdit = styled.div`
   display: flex;
   flex: 1;
-  max-height: calc(100vh - 60px);
 `;
 
 export const StyledComponentArea = styled.div`

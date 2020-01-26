@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {
   CompOverviewHeader,
   HeaderTitle,
@@ -15,13 +15,19 @@ import {EyeOff} from "react-feather";
 import UseGetEntityData from "../../../effects/useGetEntityData";
 import UseGetEntities from "../../../effects/useGetEntitites";
 import {actionRequestRemoveEntity} from "../../../stores/entities/entitiesActions";
+import {selectLocation} from "../../../selectors";
+import routes from "../../../routes";
+import {SPECIFIC} from "../../../constants/constants";
+import {actionChangeView} from "../../../stores/page/pageActions";
+import {actionSetDraft} from "../../../stores/draft/draftActions";
 
-export default ({ entity, title, component, width = 3 }) => {
+export default ({ entity: rawEntity, title, component, width = 3 }) => {
+  const entity = rawEntity.toLowerCase();
+
   const dispatch = useDispatch();
+  const location = useSelector(selectLocation);
   const [showModal, setShowModal] = React.useState(false);
   const [idForRemoval, setIdForRemoval] = React.useState(null);
-
-  console.log(showModal);
 
   UseGetEntityData({ entity });
   const { [entity]: data } = UseGetEntities([entity]);
@@ -31,8 +37,10 @@ export default ({ entity, title, component, width = 3 }) => {
    * @param id
    * @returns {function(): *}
    */
-  // const editComponent = id => () => history.push(`${match.url}${id}`);
-  const editComponent = () => {};
+  const editComponent = id => () => {
+    dispatch(actionSetDraft(data[id]));
+    dispatch(actionChangeView(`${location.type}_${SPECIFIC}`, { id }));
+  };
 
   /**
    * Hide modal
@@ -43,15 +51,12 @@ export default ({ entity, title, component, width = 3 }) => {
    * Add component
    * @returns {*}
    */
-  // const addComponent = () => history.push(`${match.url}new`);
-  const addComponent = () => {};
+  const addComponent = () => dispatch(actionChangeView(`${location.type}_${SPECIFIC}`, { id: 'new' }));
 
   /**
    * Remove item
    */
   const removeItem = () => {
-    //dispatch({ type: 'DELETE', origin: entity, id: idForRemoval,  isAdmin: true });
-    console.log(':D')
     dispatch(actionRequestRemoveEntity(entity, idForRemoval));
     setShowModal(false);
     setIdForRemoval(null);
@@ -120,8 +125,6 @@ export default ({ entity, title, component, width = 3 }) => {
      */
     // const isHidden = data => data.reveal_date !== null && new Date(data.reveal_date).getTime() > new Date().getTime();
     const isHidden = data => false;
-
-    console.log(data);
 
     return data
       ? Object.values(data).map(item =>

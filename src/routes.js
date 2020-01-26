@@ -1,19 +1,73 @@
 import * as EntitiesRoutes from './constants/entitiesConstants';
 
-const generateEntitiesRoutes = () => Object.keys(EntitiesRoutes).reduce((acc, curr) => ({ ...acc, [curr+'s']: `/admin/${EntitiesRoutes[curr]}` }), {});
-const generateEntitiesRoutesSpecific = () => Object.keys(EntitiesRoutes).reduce((acc, curr) => ({ ...acc, [curr]: `/admin/${EntitiesRoutes[curr]}/:id` }), {});
+const { INTRO, INSURANCE_STAFF, ...rest } = EntitiesRoutes;
+
+/**
+ * Generates overview admin routes
+ * @returns {{}}
+ */
+const generateEntitiesRoutes = () => Object.keys(rest).reduce((acc, curr) => ({ ...acc, [curr]: {
+    path: `/admin/${EntitiesRoutes[curr]}`,
+    isAdmin: true,
+  }
+}), {});
+
+/**
+ * Generates specific admin routes
+ * @returns {{}|{[p: string]: string}}
+ */
+const generateEntitiesRoutesSpecific = () => Object.keys(EntitiesRoutes).reduce((acc, curr) => ({ ...acc, [`${curr}_SPECIFIC`]: {
+    path: `/admin/${EntitiesRoutes[curr]}/:id`,
+    isAdmin: true,
+  }
+}), {});
+
+console.log({
+  ...generateEntitiesRoutes(),
+  ...generateEntitiesRoutesSpecific(),
+});
 
 export default {
-  HOME: '/',
-  MEMBER: '/member/',
-  ABOUT: '/about',
-  PLANING: '/planing',
-  EVENTS: '/events',
-  LOG_IN: '/admin/login',
-  REGISTER_ADMIN: '/admin/register',
-  RESET_ADMIN_PASSWORD: '/admin/reset-password',
-  SET_NEW_ADMIN_PASSWORD: '/admin/set-new-password',
-  ADMIN_HOME: '/admin/home',
+  HOME: {
+    path: '/',
+    isAdmin: false,
+  },
+  MEMBER: {
+    path: '/member/',
+    isAdmin: false,
+  },
+  ABOUT: {
+    path: '/about',
+    isAdmin: false,
+  },
+  PLANING: {
+    path: '/planing',
+    isAdmin: false,
+  },
+  EVENTS: {
+    path: '/events',
+    isAdmin: false,
+  },
+  LOG_IN: {
+    path: '/admin/login',
+    isAdmin: false,
+  },
+  REGISTER_ADMIN: {
+    path: '/admin/register',
+    isAdmin: false,
+  },
+  RESET_ADMIN_PASSWORD: {
+    path: '/admin/reset-password',
+    isAdmin: false,
+  },
+  SET_NEW_ADMIN_PASSWORD: {
+    path: '/admin/set-new-password',
+    isAdmin: false,
+  },
+  ADMIN_HOME: {
+    path: '/admin/home',
+    isAdmin: true,
+  },
 
   ...generateEntitiesRoutes(),
   ...generateEntitiesRoutesSpecific(),

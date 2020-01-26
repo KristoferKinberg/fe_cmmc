@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SidebarBlock from '../SidebarBlock';
-import ImageUploader from "../../../../../GeneralComponents/ImageUploader/ImageUploader";
 import { Upload } from 'react-feather';
 import Button from '../../../../../components/Button';
+import ImageUploader from "../../../../ImageUploader";
 
 class ImageUploadBlock extends React.PureComponent {
   static propTypes = {

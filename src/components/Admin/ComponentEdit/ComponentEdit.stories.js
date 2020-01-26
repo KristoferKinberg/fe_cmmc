@@ -1,11 +1,7 @@
 import React from 'react';
-
-// import { linkTo } from '@storybook/addon-links';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import '../../../../node_modules/bootstrap/scss/bootstrap.scss';
 import ComponentEdit from './';
-import PresentationCard from '../../../components/PresentationCard';
 import InputBlock from './SidebarBlock/InputBlock';
 import TextareaBlock from './SidebarBlock/TextareaBlock';
 import ListBlock from './SidebarBlock/ListBlock';
@@ -114,7 +110,7 @@ class Temp extends React.PureComponent {
 
   render() {
     const {  } = this.props;
-    const component = (<PresentationCard data={this.state} />);
+    const component = (<div></div>);
 
     return (
       <ComponentEdit component={component}>

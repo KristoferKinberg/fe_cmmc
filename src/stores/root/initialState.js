@@ -1,4 +1,8 @@
 export default {
+  draft: {
+    dirtyDraft: false,
+    data: null,
+  },
   admin: {
     token: '',
     inviteData: {

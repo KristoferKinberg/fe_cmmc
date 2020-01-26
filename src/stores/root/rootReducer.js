@@ -3,6 +3,7 @@ import initialState from "./initialState";
 import {reducer as toastr} from 'react-redux-toastr'
 import page from '../page/pageReducer';
 import home from '../home/homeReducer';
+import draft from '../draft/draftReducer';
 import admin from '../admin/adminReducer';
 import news from '../entities/news/newsReducer';
 import slides from '../entities/slides/slidesReducer';
@@ -47,4 +48,5 @@ export default (initialData = initialState, location) => combineReducers({
   home,
   entities,
   admin,
+  draft
 });

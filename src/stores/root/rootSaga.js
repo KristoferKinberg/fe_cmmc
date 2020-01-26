@@ -1,7 +1,7 @@
 import {all} from "redux-saga/effects";
 import {watchGetHomeData} from "../home/homeSaga";
 import {watchGetViewData, watchGetEntityData} from "../views/viewsSaga";
-import {watchRemoveEntity, watchUpdateEntity} from "../entities/entitiesSagas";
+import {watchGetEntity, watchRemoveEntity, watchUpdateEntity} from "../entities/entitiesSagas";
 import {watchDoLogin, watchGetAdmins, watchGetInvited} from "../admin/adminSaga";
 
 export function* rootSaga() {
@@ -14,5 +14,6 @@ export function* rootSaga() {
     watchGetAdmins(),
     watchGetInvited(),
     watchRemoveEntity(),
+    watchGetEntity(),
   ]);
 }

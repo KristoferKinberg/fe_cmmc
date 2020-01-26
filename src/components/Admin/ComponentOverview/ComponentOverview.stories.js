@@ -1,13 +1,9 @@
 import React from 'react';
-
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import '../../../../node_modules/bootstrap/scss/bootstrap.scss';
-
-import CardBase from '../../../components/CardBase';
-
-// import { linkTo } from '@storybook/addon-links';
 import ComponentOverview from "./";
+
+const CardBase = ({ content }) => <div>{ content }</div>;
 
 class Temp extends React.PureComponent {
   constructor(props) {
