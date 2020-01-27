@@ -111,7 +111,7 @@ export default ({ settings, children, component, overrideStyles, entity }) => {
    */
   const renderSidebar = () => {
     return (
-      <StyledSidebar className={"col-" + settingsObj.size}>
+      <StyledSidebar>
         <StyledSidebarHeader>
           <StyledSidebarHeaderElem>
             Edit toolbar

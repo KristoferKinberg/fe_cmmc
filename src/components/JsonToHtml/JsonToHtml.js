@@ -1,9 +1,9 @@
 import React from 'react';
 import draftToHtml from 'draftjs-to-html';
 import { StyledJsonToHtml } from "./StyledJsonToHtml";
-import DefaultJson from '../../Admin/Layout/AdminLayoutComponentEdit/SidebarBlock/WysiwygBlock/defaultJson';
+import DefaultJson from "../Admin/ComponentEdit/SidebarBlock/WysiwygBlock/defaultJson";
 
-const JsonToHtml = ({ json }) => {
+export default ({ json }) => {
   const getJson = json
     ? JSON.parse(json)
     : DefaultJson;
@@ -16,5 +16,3 @@ const JsonToHtml = ({ json }) => {
 
   return <StyledJsonToHtml dangerouslySetInnerHTML={createMarkup()} />
 };
-
-export default JsonToHtml;

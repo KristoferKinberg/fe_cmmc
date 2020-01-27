@@ -2,6 +2,7 @@ import ComponentOverview from "../../components/Admin/ComponentOverview";
 import * as EntitiesRoutes from "../../constants/entitiesConstants";
 import {NEWS, BENEFITS, SLIDES, GOALS, STATUES, GALLERY_EVENTS} from "../../constants/entitiesConstants";
 import React from "react";
+import NewsCard from "../../components/NewsCard/NewsCard";
 
 const AnyComponent = (props) => {
   const propss = Object.values(props);
@@ -14,7 +15,7 @@ const AnyComponent = (props) => {
 const componentOverviewGenerator = ({ entity, component }) => () => <ComponentOverview entity={entity} title={entity} component={component} />;
 
 const overviewComponentRoutes = [
-  { entity: NEWS, component: AnyComponent },
+  { entity: NEWS, component: NewsCard },
   { entity: BENEFITS, component: AnyComponent },
   { entity: SLIDES, component: AnyComponent },
   { entity: GOALS, component: AnyComponent },

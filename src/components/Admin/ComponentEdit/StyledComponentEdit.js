@@ -20,6 +20,7 @@ export const StyledComponentArea = styled.div`
 `;
 
 export const StyledSidebar = styled.div`
+  max-width: 33%;
   background: #fff;
   height: 100%;
   padding: 0;
@@ -47,25 +48,25 @@ export const StyledSidebarContent = styled.div`
   height: 100%;
   padding: 0 2em;
   
-      /* width */
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
 
-      /* Track */
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-      }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
 
-      /* Handle */
-      ::-webkit-scrollbar-thumb {
-        background: #888;
-      }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
 
-      /* Handle on hover */
-      ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-      }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 `;
 
 export const StyledSidebarButtons = styled.div`

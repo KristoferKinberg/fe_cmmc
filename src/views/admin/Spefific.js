@@ -2,6 +2,8 @@ import ComponentEdit from "../../components/Admin/ComponentEdit/ComponentEdit";
 import React from "react";
 import InputBlock from "../../components/Admin/ComponentEdit/SidebarBlock/InputBlock";
 import TextareaBlock from "../../components/Admin/ComponentEdit/SidebarBlock/TextareaBlock";
+import NewsCard from "../../components/NewsCard/NewsCard";
+import WysiwygBlock from "../../components/Admin/ComponentEdit/SidebarBlock/WysiwygBlock";
 
 const AnyComponent = (props) => {
   const propss = Object.values(props);
@@ -13,8 +15,6 @@ const AnyComponent = (props) => {
 };
 
 export const componentSpecificGenerator = ({ entity, component, handlers }) => () => {
-  console.log(handlers);
-
   return <ComponentEdit entity={entity} component={component}>
     {handlers}
   </ComponentEdit>
@@ -22,10 +22,10 @@ export const componentSpecificGenerator = ({ entity, component, handlers }) => (
 
 export const specificComponentRoutes = [
   {
-    entity: 'News', component: AnyComponent, handlers: [
+    entity: 'News', component: NewsCard, handlers: [
       <InputBlock title={'Bild-url'} responsibility={'imgUrl'}/>,
       <InputBlock title={'Titel'} responsibility={'title'}/>,
-      <TextareaBlock title={'Text'} responsibility={'text'}/>,
+      <WysiwygBlock title={'Text'} responsibility={'text'} />
     ]
   },
   {

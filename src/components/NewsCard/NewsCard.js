@@ -38,7 +38,7 @@ export default ({ id, backgroundUrl, date, title, text, onClick, isAdmin = false
    */
   const renderTitle = () => <div>
     <StyledNewsCardTitle>
-      {this.props.data.title}
+      { title }
     </StyledNewsCardTitle>
   </div>;
 
@@ -48,7 +48,7 @@ export default ({ id, backgroundUrl, date, title, text, onClick, isAdmin = false
    */
   const renderDate = () => <StyledNewsCardDateContainer>
     <StyledNewsCardDate>
-      {this.props.data.date}
+      { date }
     </StyledNewsCardDate>
   </StyledNewsCardDateContainer>;
 
@@ -70,7 +70,7 @@ export default ({ id, backgroundUrl, date, title, text, onClick, isAdmin = false
    * @returns {*}
    */
   const renderText = () => <StyledNewsCardTextContianer>
-    <JsonToHtml json={this.props.data.text} />
+    <JsonToHtml json={ text } />
   </StyledNewsCardTextContianer>;
 
   /**

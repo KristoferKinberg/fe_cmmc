@@ -16,7 +16,7 @@ export const StyledNewsCardBg = styled.div`
   height: 100%;
 `;
 
-export const StyledNewsCardBgImage = styled.image`
+export const StyledNewsCardBgImage = styled.img`
   height: 100%;
   margin-left: 50%;
   transform: translateX(-50%);
